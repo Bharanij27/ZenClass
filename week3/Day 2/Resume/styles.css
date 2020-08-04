@@ -7,6 +7,7 @@ body{
     background-color:grey;
     display: block;
     height: 300px;
+    border: grey;
 }
 
 .image-cropper{
@@ -43,6 +44,7 @@ body{
 
 .row {
     display: flex;
+    border: grey ;
   }
   
 .column {
