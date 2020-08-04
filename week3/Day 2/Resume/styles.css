@@ -1,0 +1,70 @@
+body{
+    padding: 100px 300px;
+    align-content: center;
+}
+
+.head{
+    background-color:grey;
+    display: block;
+    height: 300px;
+}
+
+.image-cropper{
+    padding: 40px 0 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.avatar {
+    border: orange ;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.dotted {
+    stroke-dasharray: 0.1, 12.5;
+    stroke-linecap: round;
+  }
+
+.author{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#F3B02A;
+    color: #353535;
+    font-size: 90px;
+    font-family: monospace;
+    border-radius: 25%;
+}
+
+.row {
+    display: flex;
+  }
+  
+.column {
+    flex: 50%;
+    padding: 40px;
+}
+
+.text{
+    padding: 10px;
+    padding-left: 50px;
+    font-size: 17px;
+    font-family: 'Times New Roman';
+}
+
+.heading{
+    padding: 20px;
+    display: inline;
+    font-size: 25px;
+    color:#6B6565;
+}
+
+.border{
+    border-style:solid ;
+    width: 50px; height: 50px;
+}
