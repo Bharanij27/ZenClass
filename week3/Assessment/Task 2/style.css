@@ -99,7 +99,9 @@ body{
     font-size: x-large;
     padding: 8px;
     border-radius: 20px;
+    border: none;
     width: fit-content;
+    background-color: limegreen;
 }
 
 
