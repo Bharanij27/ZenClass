@@ -1,0 +1,121 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assesment</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    </head>
+    <body>
+          
+        <script>
+            function showAlert(){
+                alert('Thank You...')
+            }
+        </script>
+        <div class="head">
+            <form method="POST" onsubmit="return showAlert()"> 
+                <div class="row">
+                    <div class="column-left">
+                        <label for="name">Full Name</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-user icon"></i>
+                        <input type="text" id="name" class="data" name="name"required placeholder="Full Name">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="column-left">
+                        <label for="address1">Address Line 1</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="address1" class="data" name="address1"required placeholder="Address Line 1">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="address2">Address Line 2</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="address2" class="data" name="address2"required placeholder="Address Line 1">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="city" class="data" name="city"required placeholder="City">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="area">State/Provisio/Region</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="area" class="data" name="area"required placeholder="State/Provisio/Region">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="post">Postal Code/ZIP</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="post" class="data" name="post"required placeholder="Postal Code/ZIP">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="country">Country</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <select class="data select" name = "Country">
+                            <option value = "1">USA</option>
+                            <option value = "2">UK</option>
+                            <option value = "3">INDIA</option>
+                         </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="e-mail">E-mail</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="e-mail" class="data" name="e-mail"required placeholder="E-mail">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label for="number">Phone Number</label>
+                    </div>
+                    <div class="column-right">
+                        <i class="fa fa-address-book-o icon" aria-hidden="true"></i>
+                        <input type="text" id="number" class="data" name="number"required placeholder="Phone Number">
+                    </div>
+                </div>
+
+                <div class="column-right">
+                    <button type="submit">Submit</button>
+                </div>
+                <br>
+            </form>
+        </div>
+    </body>
+    </html>

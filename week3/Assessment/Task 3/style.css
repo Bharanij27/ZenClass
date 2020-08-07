@@ -1,0 +1,53 @@
+body{
+    background-color: whitesmoke;
+    margin: 100px 250px;
+    padding: 50px;
+    display: grid;
+}
+
+.content{
+    display:inline-grid ;
+    width: 250px;
+    margin: 20px;
+    border: 1px solid lightgray;
+    text-align: justify ;
+    background-color: white;
+}
+
+.heading{
+    font-family:  'Gill Sans';
+    font-size: xx-large;
+}
+
+.product{
+    font-size: 20px;
+}
+
+.about-product{
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    margin: 15px 0px;
+}
+  
+.col{
+    display: flex;
+    float: left;
+    width: 50%;
+}
+.price{
+    position: relative;
+    top: 5px;
+}
+
+.btn{
+    background-color: #39bd3e;
+    padding: 5px;
+    font-size: medium;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
