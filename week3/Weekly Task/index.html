@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <script src="script.js"></script>
+
+    <div class="container1 md-5">
+        <div class="container align-items-center">
+            <div class="text-center font">
+                CALCULATOR
+            </div>
+        </div>
+        <hr>        
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col-sm-12 no-pad">
+                    <input class="input" type="text" name="data" id="data" value="" >
+                </div>
+            </div>
+        </div>
+            <div class="p-1">
+                <div class="row p-2">
+                    <button class="button-sm btn btn-sm col-sm-2 mr-2" onClick="getData(7);">7</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(8);">8</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(9);">9</button>
+                    <div class="col=sm-2 ml-3"></div>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData('+');">+</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData('-');">-</button>
+            </div>
+            <div class="row p-2">
+                    <button class="button-sm btn btn-sm col-sm-2 mr-2" onClick="getData(4);">4</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(5);">5</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(6);">6</button>
+                    <div class="col=sm-2 ml-3"></div>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData('*');">*</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData('/');">/</button>
+            </div>
+            <div class="row p-2">
+                    <button class="button-sm btn btn-sm col-sm-2 mr-2" onClick="getData(1);">1</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(2);">2</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(3);">3</button>
+                    <div class="col=sm-2 ml-3"></div>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData('%');">%</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="compute();">=</button>
+            </div>
+            <div class="row p-2">
+                    <button class="button-sm btn btn-sm col-sm-2 mr-2" onClick="del();">Delete</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="getData(0);">0</button>
+                    <button class="btn btn-sm col-sm-2 mr-2" onClick="clearField();">clear</button>
+            </div>
+            </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>
+</html>
