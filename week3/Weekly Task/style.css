@@ -58,7 +58,7 @@ input[text]:focus{
 
 
 
-@media (min-width:200px) and (max-width: 480px){
+@media (min-width:0px) and (max-width: 480px){
     body{
         height: fit-content;
         display: block;
