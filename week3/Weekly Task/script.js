@@ -9,7 +9,6 @@ function del(){
 
 function clearField(){
     let input = document.querySelector('.input');
-    console.log(1)
     input.value = '';
 }
 
