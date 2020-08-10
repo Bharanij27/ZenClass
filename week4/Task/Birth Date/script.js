@@ -61,7 +61,6 @@ function calculateDiff(){
     
     if(isNaN(milliSecondsCount)) return;
 
-    if(milliSecondsCount < 0) daysCount *= -1;
     milliseconds.innerHTML = 'MilliSeconds: <div class="value">' + milliSecondsCount + '</div>';
 
     let yearCount = Math.floor(milliSecondsCount / (1000 * 3600 * 24 * 365));
