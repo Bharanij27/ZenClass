@@ -55,6 +55,7 @@ container.append(resultField);
 function calculateDiff(){
     let current = new Date();
     let birthDate = new Date(dateField.value);
+    birthDate.setHours(0);
 
     clearDate();
     let milliSecondsCount =  current.getTime() - birthDate.getTime();
