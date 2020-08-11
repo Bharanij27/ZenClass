@@ -321,7 +321,7 @@ container.append(form);
 document.body.append(container);
 
 
-if(localStorage.getItem('data')){
+if(JSON.parse(localStorage.getItem('data'))){
     createTable();
     localStorage.setItem('data',null)
 }
