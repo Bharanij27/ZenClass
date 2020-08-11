@@ -320,12 +320,7 @@ form.append(noteField);
 container.append(form);
 document.body.append(container);
 
-
-if(JSON.parse(localStorage.getItem('data'))){
-    createTable();
-    localStorage.setItem('data',null)
-}
-
+createTable();
 
 function addAttributes(element, type, id, Class, name, placeholder){
     element.setAttribute('type', type);
