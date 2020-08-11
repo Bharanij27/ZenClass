@@ -371,6 +371,7 @@ function createTable(){
     tableContainer.append(tableField);
     tableField.append(table);
     document.body.append(tableContainer);
+    localStorage.setItem('data', null)
 }
 
 function processData(){
