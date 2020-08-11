@@ -60,7 +60,7 @@ function calculateDiff(){
     clearDate();
     let milliSecondsCount =  current.getTime() - birthDate.getTime();
     
-    if(isNaN(milliSecondsCount) || !milliSecondsCount) return;
+    if(isNaN(milliSecondsCount) || milliSecondsCount < 0) return;
 
     milliseconds.innerHTML = 'MilliSeconds: <div class="value">' + milliSecondsCount + '</div>';
 
