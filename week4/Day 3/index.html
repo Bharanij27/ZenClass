@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .page{
+            background-color: lavender;
+        }
+        body{
+            background-color: black;
+            padding-top: 90px;
+        }
+        table{
+            padding: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 0px 20px;
+        }
+        th, td  {
+            text-align: center;
+        }
+        .content{
+            padding: 20px;
+            display: flex;
+            font-size: 50px;
+            justify-content: center;
+            font-family: cursive;
+        }
+        nav{
+            display: flex;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="script.js"></script>
+    <script>
+        // console.log(data)
+
+        //          Adding Table Header
+
+
+        function createPaginationButton(value, pgNum = value-1){
+            let list = document.createElement('li');
+            list.classList.add('page-item');
+            if(pgNum == pageNo && (value != "First" && value!= "Next")) list.classList.add('active');
+
+            let button  = document.createElement('button');
+            button.classList.add('page-link');
+            button.innerHTML = value
+            button.setAttribute('onclick', 'CreateBody('+pgNum+')');
+
+            list.append(button);
+            return list;
+        }
+
+        function addtableHeader(value){
+            let header = document.createElement('th');
+            header.innerText = value;
+            header.setAttribute('scope', 'col');
+            return header;
+        }
+
+        // Adding Row in table
+
+        function createRows(dataObject, num){
+            let row = document.createElement('tr');
+
+            let numField = document.createElement('td');
+            numField.innerHTML = num;
+            row.append(numField)
+
+            for(let i in dataObject){
+                let td = document.createElement('td');
+                td.innerHTML = dataObject[i];
+                row.append(td);
+            }
+            return row;
+        }
+
+        //                  Container
+
+        let container = document.createElement('div');
+        container.classList.add('container','page', 'mt-5');
+
+        let content = document.createElement('div');
+        content.setAttribute('class', 'content');
+        content.innerText = 'PAGINATION';
+
+        container.append(content)
+
+        //                  Table
+        let table = document.createElement('table');
+        table.classList.add('table', 'table-light', 'table-striped');
+
+        //                  Table Head
+        let thead = document.createElement('thead');
+        thead.classList.add('thead-dark');
+
+        let headrow = document.createElement('tr');
+
+        let headNo = addtableHeader('No');
+        let headId = addtableHeader('ID');
+        let headName = addtableHeader('Name');
+        let headEmail = addtableHeader('Email');
+
+        headrow.append(headNo, headId, headName, headEmail);
+        thead.append(headrow);
+
+        //                  Table Body
+
+        let pageNo = 0;
+        let tableLength = 10;
+
+        function CreateBody(value){
+            if(value == -1) pageNo--;
+            else if(value == +1) pageNo++;
+            else pageNo = value;
+
+            let dataStart = pageNo * tableLength
+            let dataEnd = dataStart + tableLength;
+            let body = document.createElement('tbody');
+            
+            if(dataStart >= data.length){
+                pageNo--;
+                return;
+            }
+
+            if(dataStart < 0){
+                pageNo++;
+                return;
+            }
+
+            for(let i = dataStart; i < dataEnd && i < data.length; i++){
+                body.append(createRows(data[i], i - dataStart + 1));    //   Adding Each Row;
+            }
+
+            
+            if(table.tBodies.length){
+                let table = document.getElementById('table');
+                let row = document.getElementsByTagName('tbody')[0];
+                row.parentNode.removeChild(row);
+            }
+            table.append(body);
+
+            //      Page Number
+
+            let div = document.createElement('div');
+            div.setAttribute('style', 'display:inline-flex;');
+            div.setAttribute('class', 'prevDiv'); 
+
+            let one, two, three, four, five, current;
+
+            if(pageNo > 0) div.append(previous)
+            
+            if(pageNo == 0 || pageNo - 2 < 0){
+                one = createPaginationButton(1)
+                two = createPaginationButton(2);
+                three = createPaginationButton(3);
+                four = createPaginationButton(4);
+                five = createPaginationButton(5);
+                div.append(one, two, three, four, five, next);                
+            }
+            else if(pageNo + 3 >= 10){
+                one = createPaginationButton(6)
+                two = createPaginationButton(7);
+                three = createPaginationButton(8);
+                four = createPaginationButton(9);
+                five = createPaginationButton(10);
+                div.append(one,two, three, four, five);                
+            }
+
+            else{
+                one = createPaginationButton(pageNo - 1);
+                two = createPaginationButton(pageNo);
+                current = createPaginationButton(pageNo + 1)
+                three = createPaginationButton(pageNo + 2);
+                four = createPaginationButton(pageNo + 3);
+                div.append(one, two, current, three, four);
+            }
+
+            if(pageNo < 9){div.append(next)}
+
+            let oldDiv = document.getElementsByClassName('prevDiv')[0];
+            unorderList.replaceChild(div, oldDiv);
+        }
+
+        table.append(thead);
+        container.append(table);
+
+        //                  Pagination
+
+        let navBar = document.createElement('nav');
+        let unorderList = document.createElement('ul');
+        unorderList.classList.add('pagination');
+        
+        let empty = document.createElement('div');
+        empty.classList.add('prevDiv');
+
+        let first = createPaginationButton('First', 0);
+        let last = createPaginationButton('last', 9);
+        let previous = createPaginationButton('Previous', '-1');
+        let next = createPaginationButton('Next', '+1');            
+                
+        unorderList.append(first, empty);
+        navBar.append(unorderList);
+
+        container.append(navBar);
+        document.body.append(container);
+        CreateBody(0);
+        unorderList.append(last);
+
+    </script>
+</body>
+</html>
