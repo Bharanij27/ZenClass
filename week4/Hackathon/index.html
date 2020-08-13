@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        function getUserName(){
+            let userName = prompt('Enter your name');
+            if(userName){
+                alert(userName);
+                let userObj = {};
+                userObj[userName] = 0;
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                users.push(userObj)
+                localStorage.setItem('users', JSON.stringify(users));
+                window.open('sudoku.html', '_self');
+            }
+        }
+
+        function showScore(){
+            let userDetails = JSON.parse(localStorage.getItem('users'));
+            for(let i in userDetails){
+                let result = userDetails[i];
+                console.log(Object.keys(result)[0], Object.values(result)[0]);
+            }
+        }
+
+        let container = document.createElement('div');
+        container.classList.add('container');
+
+        let gameTitle = document.createElement('div');
+        gameTitle.classList.add('gameTitle');
+        gameTitle.innerText = 'SUDOKU';
+
+        let startButton = document.createElement('button');
+        startButton.classList.add('button');
+        startButton.setAttribute('onclick', 'getUserName()');
+        startButton.innerText = 'Start Game';
+
+        let ShowResult = document.createElement('button');
+        ShowResult.classList.add('button');
+        ShowResult.setAttribute('onclick', 'showScore()');
+        ShowResult.innerText = 'Show Result'
+
+
+        container.append(gameTitle, startButton, ShowResult);
+
+        document.body.append(container);
+    </script>
+</body>
+</html>
