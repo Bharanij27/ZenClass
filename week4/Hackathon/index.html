@@ -12,6 +12,8 @@
         function getUserName(){
             let userName = prompt('Enter your name');
             if(userName && userName.trim().length){
+                userName = userName.trim();
+                userName = userName.charAt(0).toUpperCase() + userName.slice(1);
                 let userObj = {};
                 let users = JSON.parse(localStorage.getItem('users')) || [];
                 
