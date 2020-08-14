@@ -519,8 +519,14 @@ let unordelist = document.createElement('ul');
 let note = document.createElement('div');
 note.innerText = 'Note';
 
+let list0 = document.createElement('li');
+list0.innerText = 'The time limit to solve this puzzle is only 4 Minutes after that you will be redirected Home Page';
+
 let list1 = document.createElement('li');
 list1.innerText = 'Click on the boxes to change the value';
+
+let list11 = document.createElement('li');
+list11.innerText = 'Click clear button on the modal to delete the cell value and to close the modal';
 
 let list2 = document.createElement('li');
 list2.innerText = 'Fill each row, grid (3 x 3), column with unique value to solve the sudoku puzzle';

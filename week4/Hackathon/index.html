@@ -57,7 +57,7 @@
 
         function sortByScore(details){
             let sorted = details.sort(function(a, b){
-                if(b[Object.keys(b)[0]] == a[Object.keys(a)[0]]) return Object.keys(b)[0] - Object.keys(a)[0];
+                if(b[Object.keys(b)[0]] == a[Object.keys(a)[0]]) return Object.keys(a)[0] - Object.keys(b)[0];
                 return b[Object.keys(b)[0]] - a[Object.keys(a)[0]];
             })
             return sorted;
@@ -77,11 +77,11 @@
             
             let headrow = document.createElement('tr');
             
-            let userNo = addtableHeader('No');
+            let userRank = addtableHeader('Rank');
             let userName = addtableHeader('Name');
             let userScore = addtableHeader('Score');
             
-            headrow.append(userNo, userName, userScore);
+            headrow.append(userRank, userName, userScore);
             thead.append(headrow);
             
             let tbody = document.createElement('tbody');
