@@ -383,6 +383,8 @@ title.innerText = 'SUDOKU';
 let body = document.createElement('div');
 body.classList.add('tableField');
 
+let tableContent = [];
+
 function createTable(){
     
     let dataIndex = Math.floor(Math.random() * (data.length - 1) - 1); 
@@ -394,7 +396,6 @@ function createTable(){
 
     let tbody = document.createElement('tbody');
 
-    let tableContent = [];
     let spliiter = 0;
     for(let i = 0; i < 9; i++){
         tableContent.push(selectedData.substring(spliiter, spliiter+9).split(''));
