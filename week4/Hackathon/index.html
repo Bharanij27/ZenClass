@@ -53,6 +53,8 @@
         }
         
         function createModal(){
+            let userDetails = JSON.parse(localStorage.getItem('users'));
+            if(userDetails.length == 0) return;
             if(modalContent.lastElementChild.nodeName == 'TABEL'){
                 modalContent.removeChild(modalContent.lastElementChild)
             }
@@ -69,7 +71,6 @@
             headrow.append(userNo, userName, userScore);
             thead.append(headrow);
             
-            let userDetails = JSON.parse(localStorage.getItem('users'));
             let tbody = document.createElement('tbody');
             for(let i in userDetails){
                 let userInfo = userDetails[i];
