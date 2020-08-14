@@ -11,7 +11,7 @@
         //          Get userName on clicking Start Game
         function getUserName(){
             let userName = prompt('Enter your name');
-            if(userName.trim().length){
+            if(userName && userName.trim().length){
                 let userObj = {};
                 let users = JSON.parse(localStorage.getItem('users')) || [];
                 
@@ -54,10 +54,19 @@
             header.setAttribute('scope', 'col');
             return header;
         }
+
+        function sortByScore(details){
+            let sorted = details.sort(function(a, b){
+                if(b[Object.keys(b)[0]] == a[Object.keys(a)[0]]) return Object.keys(b)[0] - Object.keys(a)[0];
+                return b[Object.keys(b)[0]] - a[Object.keys(a)[0]];
+            })
+            return sorted;
+        }
         
         //                  ScoreBoard Table Creation
         function createModal(){
             let userDetails = JSON.parse(localStorage.getItem('users'));
+            userDetails = sortByScore(userDetails);
             if(userDetails.length == 0) return;
             if(modalContent.lastElementChild.nodeName == 'TABEL'){
                 modalContent.removeChild(modalContent.lastElementChild)
