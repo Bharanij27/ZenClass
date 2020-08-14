@@ -97,6 +97,19 @@ let data = [
     "3...8.......7....51..............36...2..4....7...........6.13..452...........8.."
 ] ;
 
+//                      RESTRICTS DIRECT URL ACCESS
+
+(function(){
+    let isVisited = JSON.parse(localStorage.getItem('isVisited'));
+    if(!isVisited){
+        alert('Please Enter to your name to play')
+        window.open('index.html', '_self')
+    };
+})();
+
+
+//                      Setting up the timer
+
 let setTimer
 function resetTime(){
 
@@ -136,6 +149,8 @@ window.onresize = function(){
 }
 
 
+//                     After time out or after valid solution
+
 function gameOver(won){
     let users = JSON.parse(localStorage.getItem('users'));
     let name = Object.keys(users[users.length - 1]);
@@ -151,6 +166,8 @@ function gameOver(won){
     window.open('index.html', '_self')
 }
 
+
+//          Is the current one is a valid solution 
 
 function isTableValid(){
     let grid = [[0, 0], [3, 0], [6, 0], [0, 3], [3, 3], [6, 3], [0, 6], [3, 6], [6, 6]]
@@ -171,11 +188,15 @@ function isTableValid(){
 
 let rowIndex, colIndex;
 
+
+//                  Check is the number valid on entering
 function isValid(id){
     [rowIndex, colIndex] = id.split('');
     return rowValidation(rowIndex) && colValidation(colIndex) && gridValidation(rowIndex, colIndex);
 }
 
+
+//              Checks value is valid in row manner
 
 function rowValidation(rowIndex, isFinalCheck = false){
     let row = tableContent[rowIndex].filter(number => number!='.');
@@ -186,6 +207,8 @@ function rowValidation(rowIndex, isFinalCheck = false){
     return row.length == unique.length || isrepeated;
 }
 
+
+//              Checks value is valid in column manner
 
 function colValidation(colIndex, isFinalCheck = false){
     let col = [];
@@ -202,6 +225,7 @@ function colValidation(colIndex, isFinalCheck = false){
     return col.length == unique.length || isrepeated;
 }
 
+//          Return which grid the number cell belongs to
 
 function checkGrid(index){
     if(index < 3) return [0, 2];
@@ -209,6 +233,7 @@ function checkGrid(index){
     return [6, 8];
 }
 
+//              Checks value is valid in grid manner
 
 function gridValidation(rowIndex, colIndex, isFinalCheck = false){
     let rowLimit = checkGrid(rowIndex);
@@ -226,6 +251,7 @@ function gridValidation(rowIndex, colIndex, isFinalCheck = false){
     return grid.length == unique.length || isrepeated;
 }
 
+//                          Remove the Mini Table
 
 function removeChild(element){
     if(!element || element.lastElementChild.nodeName == 'SPAN') return
@@ -235,6 +261,8 @@ function removeChild(element){
     }, true)
 }
 
+
+//                          Change the cell value
 
 function changeSpan(element, number){
     let child = element.lastElementChild;
@@ -249,6 +277,7 @@ function changeSpan(element, number){
     onfocusCell = null
 }
 
+//                  Change TableContent on updating cell
 
 function changeTableContentArray(id, value){
     if(value=='') value = '.'
@@ -256,12 +285,14 @@ function changeTableContentArray(id, value){
     tableContent[row][col] = value;
 }
 
+//                  Remove MiniTable on header part (< 450px)
 
 function removeChildOnHead(){
     let body = document.querySelector('.tableField');
     body.firstElementChild.nodeName == 'DIV' && body.removeChild(body.firstChild)
 }
 
+//                  Creating MiniTable on header part (< 450px)
 
 function tableOnHead(cell){
     onHead = true;
@@ -303,6 +334,7 @@ function tableOnHead(cell){
     body.prepend(div)
 }
 
+//          Gnenerating Mini table Number Box
 
 function getNumberBox(cell){
     //      If predefined number
@@ -368,6 +400,8 @@ function getNumberBox(cell){
 let min = '0';
 let sec = '0';
 
+//              Header Part
+
 let header = document.createElement('div');
 header.setAttribute('id', 'header');
 
@@ -379,11 +413,14 @@ let title = document.createElement('h1');
 title.innerText = 'SUDOKU'; 
 
 
+//              Body part
 
 let body = document.createElement('div');
 body.classList.add('tableField');
 
 let tableContent = [];
+
+//              Table Creation
 
 function createTable(){
     
@@ -397,6 +434,7 @@ function createTable(){
     let tbody = document.createElement('tbody');
 
     let spliiter = 0;
+    tableContent = [];
     for(let i = 0; i < 9; i++){
         tableContent.push(selectedData.substring(spliiter, spliiter+9).split(''));
         spliiter += 9;
@@ -455,6 +493,9 @@ function createTable(){
 
 createTable();
 
+
+//              Reset Button
+
 let btnDiv = document.createElement('div');
 btnDiv.classList.add('resetBtn');
 
@@ -469,6 +510,7 @@ btnDiv.append(reset);
 headerContent.append(title, timer);
 header.append(headerContent, body,  btnDiv);
 
+//              Footer 
 
 let footer = document.createElement('footer');
 let unordelist = document.createElement('ul');
