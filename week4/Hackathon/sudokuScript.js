@@ -125,14 +125,15 @@ function resetTime(){
             +min++;
         }
         
+        if(min == 4){
+            clearInterval(setTimer);
+            gameOver(false);
+            alert('Times Up... You score is 0... Better luck next time')
+        }
+
         timer.innerText = min + ' : ' + sec;
     }, 1000);
 
-    if(min == 4){
-        clearInterval(setTimer);
-        gameOver(false);
-        alert('Times Up... You score is 0... Better luck next time')
-    }
 }
 
 
