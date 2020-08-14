@@ -150,6 +150,19 @@ window.onresize = function(){
 }
 
 
+//                      On Quiting
+
+function quiting(){
+    let quit = confirm('Do you want to quit?');
+    if(quit){
+        clearInterval(setTimer);
+        gameOver(false);
+        alert('You score is 0... Better luck next time')
+    }
+}
+
+
+
 //                     After time out or after valid solution
 
 function gameOver(won){
@@ -502,11 +515,18 @@ btnDiv.classList.add('resetBtn');
 
 let reset = document.createElement('button');
 reset.setAttribute('type', 'button')
-reset.setAttribute('class', 'reset');
+reset.setAttribute('class', 'reset second');
 reset.innerText = 'Reset';
 reset.setAttribute('onclick', 'createTable()');
 
-btnDiv.append(reset);
+
+let quit = document.createElement('button');
+quit.setAttribute('type', 'button')
+quit.setAttribute('class', 'reset');
+quit.innerText = 'Exit';
+quit.setAttribute('onclick', 'quiting()');
+
+btnDiv.append(reset, quit);
 
 headerContent.append(title, timer);
 header.append(headerContent, body,  btnDiv);
@@ -540,7 +560,9 @@ list4.innerText = 'Scores will provided based on the time you take to complete. 
 let list5 = document.createElement('li');
 list5.innerText = 'Clicking on reset will give you a new puzzle and reset the timer to 0';
 
+let list6 = document.createElement('li');
+list6.innerText = 'On quiting the game, your points will be automatically reduced to 0'
 
-unordelist.append(list0, list1, list11, list2, list3, list4, list5);
+unordelist.append(list0, list1, list11, list2, list3, list4, list5, list6);
 footer.append(note, unordelist);   
 document.body.append(header, footer);
