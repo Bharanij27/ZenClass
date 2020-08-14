@@ -2,7 +2,6 @@ body{
     justify-content: center;
     background-image: url('https://img.freepik.com/free-photo/abstract-white-canvas-textures-surface_74190-7284.jpg?size=626&ext=jpg');
     background-size: cover;
-    overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -32,6 +31,7 @@ header{
 h1{
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
     color: burlywood;
@@ -44,6 +44,190 @@ h1{
 }
 
 .headerContent{
-    
+    order: 1;
 }
 
+table{
+    width: 100%;
+    height: 100%;
+    border: #aaa solid 2px !important;
+    color: #777;
+    border-radius: 6px;
+}
+
+.selectedNum{
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.default{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.tablePortion{
+    position: relative;
+    top: -20px;
+    width: 45px !important;
+    height: 45px !important;
+    height: 10px !important;
+}
+
+
+.mini-table{
+    color: white;
+    background-color: #841f1e;
+    border: none !important;
+    height: 20px;
+    position: relative;
+    top: -40px;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+
+.wrong-one{
+    color: red;
+}
+
+
+button{
+    position: relative;
+    top: -50px;
+    right: 0;
+    cursor: pointer;
+    min-width: 10px;
+    height: min-content;
+    outline: 0;
+    background-color: #841f1e;
+    color: #efefed;
+    border: 0;
+    opacity: 1;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+
+.desc{
+    width: 50px;
+    height: 50px;
+    border-color: #aaa;
+    border-style: dashed;
+    border-width: 2px 2px 0 0;
+}
+
+.no-border{
+    border-top: none;
+}
+
+.row-border{
+    border-bottom-style: solid;
+    border-color: #aaa;
+    border-bottom-width: 3px;
+}
+
+.col-border{
+    border-right-style: solid;
+    border-right-width: 3px;
+}
+
+.onheadBtn{
+    position: relative;
+}
+
+.onheadTable{
+    display: inline-table;
+    position: relative;
+    top: -50px;
+}
+
+
+.tableField{
+    order: 3;
+    position: relative;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.tablePortionOnHead tr{
+    color: white;
+    background-color: #841f1e;
+    transform: scale(1);
+}
+
+.resetBtn{
+    position: relative;
+    bottom: -100px;
+}
+
+.reset {
+    order: 4;
+    min-width: 300px;
+    min-height: 60px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: #313133 !important;
+    background: #4FD1C5;
+    background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    border: none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+    }
+    
+    .reset::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: 312px;
+    min-height: 72px;
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: ease-in-out;
+    }
+    
+    .reset:hover, .button:focus {
+    transform: translateY(-6px);
+    }
+    
+    reset:hover::before{
+    opacity: 1;
+    }
+    
+
+@media(min-width:250px) and (max-width: 495px){
+    body{
+        max-width: 100vw !important;
+        height: fit-content;
+        overflow: hidden !important;
+        display: flex;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    .headerContent{
+        position: relative;
+        justify-content: center;
+    }
+
+    .tableField{
+        position: relative;
+        width: 100%;
+        padding-left: 40px;
+        margin-right: 0 !important;
+    }
+
+}

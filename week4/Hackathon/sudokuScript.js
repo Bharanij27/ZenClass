@@ -1,52 +1,5 @@
-let setTimer = setInterval(() => {
-    +sec++;
-    if(sec < 10) sec= '0' + sec;
-
-    if(sec == 60){
-        sec = 0;
-        +min++;
-    }
-    
-    timer.innerText = min + ' : ' + sec
-    console.log(1)
-}, 1000);
-
-setTimeout(() => {
-    clearInterval(setTimer);
-}, 10000);      //240000
-
-
-
-
-let min = '0';
-let sec = '0';
-
-let header = document.createElement('header');
-header.setAttribute('id', header);
-
-let headerContent = document.createElement('div');
-headerContent.setAttribute('class', 'headerContent')
-let timer = document.createElement('p');
-timer.setAttribute('class', 'timer')
-let title = document.createElement('h1');
-title.innerText = 'SUDOKU'; 
-
-
-let table = data
-console.log(data) 
-
-
-headerContent.append(timer);
-header.append(title, headerContent);
-document.body.append(header);
-
-
-
-
-
-
-
-var data = [
+let data = [
+    "..7..82..6...3159.1..45....9.....45...2...7...74.....6....86..2.3912...5..13..9..",
     "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......",
     "52...6.........7.13...........4..8..6......5...........418.........3..2...87.....",
     "6.....8.3.4.7.................5.4.7.3..2.....1.6.......2.....5.....8.6......1....",
@@ -143,3 +96,375 @@ var data = [
     ".....2.......7...17..3...9.8..7......2.89.6...13..6....9..5.824.....891..........",
     "3...8.......7....51..............36...2..4....7...........6.13..452...........8.."
 ] ;
+
+let setTimer
+function resetTime(){
+
+    min = 0
+    sec = 0;
+
+    setTimer = setInterval(() => {
+        +sec++;
+        if(sec < 10) sec= '0' + sec;
+        
+        if(sec == 60){
+            sec = '00';
+            +min++;
+        }
+        
+        timer.innerText = min + ' : ' + sec;
+    }, 1000);
+
+    if(min == 4){
+        clearInterval(setTimer);
+        gameOver(false);
+        alert('Times Up... You score is 0... Better luck next time')
+    }
+}
+
+
+let onfocusCell = null;
+let miniTableValue = [1, 2, 3, 4, 5, 6, 7, 8 ,9];
+
+let onHead = false;
+window.onresize = function(){
+    if(window.innerWidth <= 495 && onfocusCell != null)  getNumberBox(onfocusCell); 
+    else if(onHead && onfocusCell != null){
+        getNumberBox(onfocusCell);
+        onHead = false;
+    }  
+}
+
+
+function gameOver(won){
+    let users = JSON.parse(localStorage.getItem('users'));
+    let name = Object.keys(users[users.length - 1]);
+    if(won){
+        let score = 240 - ((+min * 60) + +sec);
+        users[users.length - 1][name] = score;
+        alert('Congrats You have solved the puzzle.... You Score is ' + score)
+    }
+    else{
+        users[users.length - 1][name] = 0;
+    }
+    localStorage.setItem('users', JSON.stringify(users));
+    window.open('index.html', '_self')
+}
+
+
+function isTableValid(){
+    let grid = [[0, 0], [3, 0], [6, 0], [0, 3], [3, 3], [6, 3], [0, 6], [3, 6], [6, 6]]
+    for(let i = 0; i < 9; i++){
+        if(!rowValidation(i, true)) return false;
+    }
+
+    for(let i = 0; i < 9; i++){
+        if(!colValidation(i, true)) return false;
+    }
+
+    for(let i = 0; i < 9; i++){
+        if(!gridValidation(grid[i], true)) return false;
+    }
+
+    return true;
+}
+
+let rowIndex, colIndex;
+
+function isValid(id){
+    [rowIndex, colIndex] = id.split('');
+    return rowValidation(rowIndex) && colValidation(colIndex) && gridValidation(rowIndex, colIndex);
+}
+
+
+function rowValidation(rowIndex, isFinalCheck = false){
+    let row = tableContent[rowIndex].filter(number => number!='.');
+    let unique = [...new Set(row)];
+    let value = tableContent[+rowIndex][+colIndex];
+    let isrepeated = row.filter(number => number==value).length == 1;
+    if(isFinalCheck) return 9 == unique.length || isrepeated;
+    return row.length == unique.length || isrepeated;
+}
+
+
+function colValidation(colIndex, isFinalCheck = false){
+    let col = [];
+    for(let i = 0; i < 9; i++){
+        let value= tableContent[i].filter((number, index) =>{
+            if(index == +colIndex && number != '.') return number
+        });
+        if(value.length) col.push(value[0]);
+    }
+    let unique = [...new Set(col)];
+    let value = tableContent[+rowIndex][+colIndex];
+    let isrepeated = col.filter(number => number==value).length == 1;
+    if(isFinalCheck) return 9 == unique.length || isrepeated;
+    return col.length == unique.length || isrepeated;
+}
+
+
+function checkGrid(index){
+    if(index < 3) return [0, 2];
+    else if(index < 6) return [3, 5];
+    return [6, 8];
+}
+
+
+function gridValidation(rowIndex, colIndex, isFinalCheck = false){
+    let rowLimit = checkGrid(rowIndex);
+    let colLimit = checkGrid(colIndex);
+    let grid = [];
+    for(let i = rowLimit[0]; i <= rowLimit[1] ; i++){
+        for(let j = colLimit[0]; j <= colLimit[1]; j++){
+            tableContent[i][j] != '.' && grid.push(tableContent[i][j]);
+        }
+    }
+    let unique = [...new Set(grid)];
+    let value = tableContent[+rowIndex][+colIndex];
+    let isrepeated = grid.filter(number => number==value).length == 1;
+    if(isFinalCheck) return 9 == unique.length || isrepeated;
+    return grid.length == unique.length || isrepeated;
+}
+
+
+function removeChild(element){
+    if(!element || element.lastElementChild.nodeName == 'SPAN') return
+    element.removeChild(element.lastElementChild);
+    element.addEventListener('click', function(){
+        getNumberBox(element);
+    }, true)
+}
+
+
+function changeSpan(element, number){
+    let child = element.lastElementChild;
+    child.innerText = number
+    child.classList.add('selectedNum');
+    changeTableContentArray(child.id, number);
+    if(!isValid(child.id)) child.classList.add('wrong-one');
+    else{
+        child.classList.contains('wrong-one') && child.classList.remove('wrong-one');
+        isTableValid() && gameOver(true);
+    }
+    onfocusCell = null
+}
+
+
+function changeTableContentArray(id, value){
+    if(value=='') value = '.'
+    let [row, col] = id.split('');
+    tableContent[row][col] = value;
+}
+
+
+function removeChildOnHead(){
+    let body = document.querySelector('.tableField');
+    body.firstElementChild.nodeName == 'DIV' && body.removeChild(body.firstChild)
+}
+
+
+function tableOnHead(cell){
+    onHead = true;
+
+    let div = document.createElement('div');
+    div.classList.add('tablePortionOnHead');
+    
+    let btn = document.createElement('button');
+    btn.innerText = 'clear';
+    btn.classList.add('onheadBtn');
+    btn.addEventListener('click', function(){
+        removeChildOnHead(cell);
+        onfocusCell = null;
+        changeSpan(cell, '');
+    }, true);
+    
+    let numberBox = document.createElement('table');
+    numberBox.classList.add('onheadTable');
+    numberBox.setAttribute('cellpadding', 0);
+    numberBox.setAttribute('cellspacing', 0);
+
+    onfocusCell = cell; 
+    let row = document.createElement('tr');
+    
+    for(let i = 0 ; i < 9; i++){
+        let content = document.createElement('td');
+        content.innerText = miniTableValue[i];
+        content.addEventListener('click', function(){
+                removeChildOnHead(cell);
+                removeChild(cell);
+                changeSpan(cell, content.innerText);
+            });
+        row.append(content);
+        numberBox.append(row);
+    }
+
+    div.append(btn, numberBox);
+    let body = document.querySelector('.tableField');
+    body.prepend(div)
+}
+
+
+function getNumberBox(cell){
+    //      If predefined number
+    if(cell.classList.contains('default')) return
+    
+    if(onfocusCell != null){
+        removeChild(onfocusCell);
+        onHead && removeChildOnHead(onfocusCell);
+        cell.removeEventListener('click', function(){
+            removeChild(cell);
+        }, true);
+    }
+
+    if(window.innerWidth <= 495){
+        tableOnHead(cell);
+        return
+    } 
+    
+    let index = 0;
+    let div = document.createElement('div');
+    div.classList.add('tablePortion');
+    
+    let btn = document.createElement('button');
+    btn.innerText = 'clear';
+    btn.addEventListener('click', function(){
+        removeChild(cell);
+        onfocusCell = null;
+        changeSpan(cell, '');
+    }, true);
+    
+    let numberBox = document.createElement('table');
+    onfocusCell = cell;
+
+    numberBox.setAttribute('cellpadding', 0);
+    numberBox.setAttribute('cellspacing', 0);
+    numberBox.classList.add('mini-table');
+
+    let tbody = document.createElement('tbody');
+
+    for(let i = 0; i < 9; i+=3){
+        let miniRow = document.createElement('tr')
+        
+        for(let j = 0; j < 3; j++){
+            let td = document.createElement('td');
+            td.innerText = miniTableValue[index++];
+            td.addEventListener('click', function(){
+                removeChild(cell);
+                removeChildOnHead(cell)
+                changeSpan(cell, td.innerText);
+            });
+            miniRow.append(td);
+        }
+
+        tbody.append(miniRow);
+    }
+
+    numberBox.append(tbody);
+    div.append(btn, numberBox);
+    cell.append(div);
+}
+
+
+let min = '0';
+let sec = '0';
+
+let header = document.createElement('div');
+header.setAttribute('id', 'header');
+
+let headerContent = document.createElement('div');
+headerContent.setAttribute('class', 'headerContent')
+let timer = document.createElement('p');
+timer.setAttribute('class', 'timer')
+let title = document.createElement('h1');
+title.innerText = 'SUDOKU'; 
+
+
+
+let body = document.createElement('div');
+body.classList.add('tableField');
+
+function createTable(){
+    
+    let dataIndex = Math.floor(Math.random() * (data.length - 1) - 1); 
+    let selectedData = data[dataIndex];
+
+    let table = document.createElement('table');
+    table.setAttribute('cellpadding', 0);
+    table.setAttribute('cellspacing', 0);
+
+    let tbody = document.createElement('tbody');
+
+    let tableContent = [];
+    let spliiter = 0;
+    for(let i = 0; i < 9; i++){
+        tableContent.push(selectedData.substring(spliiter, spliiter+9).split(''));
+        spliiter += 9;
+    }
+    let rowCount = 0;
+    let colCount = 0;
+    let noBorder = 0;
+
+    for(let rowNum = 0; rowNum < 9; rowNum++){
+        let row = document.createElement('tr');
+        for(let cell = 0; cell < 9; cell++){
+            let td = document.createElement('td');
+            td.addEventListener('click', function(){
+                getNumberBox(td);
+            }, true);
+            td.setAttribute('class', 'desc');
+
+            
+            let cellContent = document.createElement('span');
+            cellContent.setAttribute('id', rowCount + '' + colCount)
+            
+            
+            if(rowCount == noBorder) td.classList.add('no-border');
+            if((colCount + 1) % 3 == 0) td.classList.add('col-border');
+            if((rowCount + 1) % 3 == 0){
+                td.classList.add('row-border');
+                noBorder = rowCount + 1;
+            }
+            
+            if(tableContent[rowCount][colCount] != "."){
+                td.classList.add('default')
+                cellContent.innerText = tableContent[rowCount][colCount];
+            }
+            colCount++;
+
+            if(colCount == 9 ){
+                colCount = 0;
+                rowCount++;
+            }
+            
+            td.append(cellContent);
+            row.append(td);
+        }
+        tbody.append(row);
+    }
+    
+    table.append(tbody);
+    if(body.firstElementChild)body.replaceChild(table ,body.firstElementChild)
+    else body.append(table);
+
+    if(setTimer){
+        clearInterval(setTimer);
+    }
+    resetTime();
+}
+
+createTable()
+
+let btnDiv = document.createElement('div');
+btnDiv.classList.add('resetBtn');
+
+let reset = document.createElement('button');
+reset.setAttribute('type', 'button')
+reset.setAttribute('class', 'reset');
+reset.innerText = 'Reset';
+reset.setAttribute('onclick', 'createTable()');
+
+btnDiv.append(reset);
+
+headerContent.append(title, timer);
+header.append(headerContent, body,  btnDiv);
+document.body.append(header);

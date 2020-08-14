@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
@@ -10,7 +10,7 @@
     <script>
         function getUserName(){
             let userName = prompt('Enter your name');
-            if(userName){
+            if(userName.trim().length){
                 alert(userName);
                 let userObj = {};
                 userObj[userName] = 0;
@@ -21,13 +21,79 @@
             }
         }
 
-        function showScore(){
-            let userDetails = JSON.parse(localStorage.getItem('users'));
-            for(let i in userDetails){
-                let result = userDetails[i];
-                console.log(Object.keys(result)[0], Object.values(result)[0]);
+        //Modal
+        
+        let modal = document.createElement('div');
+        modal.setAttribute('class', 'modal');
+        
+        let modalContent = document.createElement('div')
+        modalContent.setAttribute('class', 'modal-content');
+        
+        let closeBtn = document.createElement('span');
+        closeBtn.setAttribute('class', 'close-button');
+        
+        modalContent.append(closeBtn);
+        modal.append(modalContent);
+        document.body.append(modal);
+        function toggleModal() {
+            modalField.classList.toggle("show-modal");
+        }
+        
+        function windowOnClick(event) {
+            if (event.target === modal) {
+                toggleModal();
             }
         }
+            
+        function addtableHeader(value){
+            let header = document.createElement('th');
+            header.innerText = value;
+            header.setAttribute('scope', 'col');
+            return header;
+        }
+        
+        function createModal(){
+            if(modalContent.lastElementChild.nodeName == 'TABEL'){
+                modalContent.removeChild(modalContent.lastElementChild)
+            }
+
+            let table =document.createElement('tabel');
+            let thead = document.createElement('thead');
+            
+            let headrow = document.createElement('tr');
+            
+            let userNo = addtableHeader('No');
+            let userName = addtableHeader('Name');
+            let userScore = addtableHeader('Score');
+            
+            headrow.append(userNo, userName, userScore);
+            thead.append(headrow);
+            
+            let userDetails = JSON.parse(localStorage.getItem('users'));
+            let tbody = document.createElement('tbody');
+            for(let i in userDetails){
+                let userInfo = userDetails[i];
+                let userName = Object.keys(userInfo)[0];
+
+                let tr = document.createElement('tr');
+
+                let userNum = document.createElement('td');
+                userNum.innerText = +i + 1;
+                tr.append(userNum);
+
+                let name = document.createElement('td');
+                name.innerText = userName;
+                tr.append(name);
+
+                let score = document.createElement('td');
+                score.innerText = userInfo[userName];
+                tr.append(score);
+                tbody.append(tr);
+            }
+            table.append(thead, tbody)
+            modalContent.append(table)
+        }
+
 
         let container = document.createElement('div');
         container.classList.add('container');
@@ -42,14 +108,25 @@
         startButton.innerText = 'Start Game';
 
         let ShowResult = document.createElement('button');
-        ShowResult.classList.add('button');
-        ShowResult.setAttribute('onclick', 'showScore()');
+        ShowResult.classList.add('button', 'result');
+        ShowResult.setAttribute('onclick', 'createModal()');
         ShowResult.innerText = 'Show Result'
 
 
         container.append(gameTitle, startButton, ShowResult);
 
         document.body.append(container);
+        
+        let closeBtnEvent = document.querySelector(".close-button");
+        let resultButton = document.querySelector(".result");
+        let modalField = document.querySelector(".modal");
+        
+        
+        resultButton.addEventListener("click", toggleModal);
+        closeBtnEvent.addEventListener("click", toggleModal);
+        window.addEventListener("click", windowOnClick);
+            
+
     </script>
 </body>
 </html>
