@@ -541,6 +541,6 @@ let list5 = document.createElement('li');
 list5.innerText = 'Clicking on reset will give you a new puzzle and reset the timer to 0';
 
 
-unordelist.append(list1, list2, list3, list4, list5);
+unordelist.append(list0, list1, list11, list2, list3, list4, list5);
 footer.append(note, unordelist);   
 document.body.append(header, footer);
