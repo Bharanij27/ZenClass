@@ -453,7 +453,7 @@ function createTable(){
     resetTime();
 }
 
-createTable()
+createTable();
 
 let btnDiv = document.createElement('div');
 btnDiv.classList.add('resetBtn');
@@ -468,4 +468,30 @@ btnDiv.append(reset);
 
 headerContent.append(title, timer);
 header.append(headerContent, body,  btnDiv);
-document.body.append(header);
+
+
+let footer = document.createElement('footer');
+let unordelist = document.createElement('ul');
+
+let note = document.createElement('div');
+note.innerText = 'Note';
+
+let list1 = document.createElement('li');
+list1.innerText = 'Click on the boxes to change the value';
+
+let list2 = document.createElement('li');
+list2.innerText = 'Fill each row, grid (3 x 3), column with unique value to solve the sudoku puzzle';
+
+let list3 = document.createElement('li');
+list3.innerText = 'Try to finish the puzzle before 4 minutes';
+
+let list4 = document.createElement('li');
+list4.innerText = 'Scores will provided based on the time you take to complete. If you could not able to solve within 4 minutes you will have 0 Point';
+
+let list5 = document.createElement('li');
+list5.innerText = 'Clicking on reset will give you a new puzzle and reset the timer to 0';
+
+
+unordelist.append(list1, list2, list3, list4, list5);
+footer.append(note, unordelist);   
+document.body.append(header, footer);
