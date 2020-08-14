@@ -212,7 +212,7 @@ button{
         height: fit-content;
         overflow: hidden !important;
         display: flex;
-        top: 40%;
+        top: 50% !important;
         left: 50%;
         transform: translate(-50%, -50%);
         position: absolute;
