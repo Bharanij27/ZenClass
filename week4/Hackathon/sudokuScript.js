@@ -100,8 +100,8 @@ let data = [
 //                      RESTRICTS DIRECT URL ACCESS
 
 (function(){
-    let isVisited = JSON.parse(localStorage.getItem('isVisited'));
-    if(!isVisited){
+    let isVerified = JSON.parse(localStorage.getItem('isVerified'));
+    if(!isVerified){
         alert('Please Enter to your name to play')
         window.open('index.html', '_self')
     };
