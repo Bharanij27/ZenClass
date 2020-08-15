@@ -46,7 +46,8 @@
         }
         
         function windowOnClick(event) {
-            if (event.target === modal) {
+            let modalVisible = document.querySelector('.show-modal');
+            if (modalVisible) {
                 toggleModal();
             }
         }
@@ -150,7 +151,7 @@
         
         resultButton.addEventListener("click", toggleModal);
         closeBtnEvent.addEventListener("click", toggleModal);
-        window.addEventListener("click", windowOnClick);
+        modalField.addEventListener("click", windowOnClick);
             
 
     </script>
