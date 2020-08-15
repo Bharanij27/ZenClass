@@ -43,6 +43,17 @@
         document.body.append(modal);
         function toggleModal() {
             modalField.classList.toggle("show-modal");
+            let modalVisible = document.querySelector('.show-modal');
+            if (modalVisible) {
+                window.addEventListener("click", function(){
+                    windowOnClick();
+                }, true);
+            }
+            else{
+                window.removeEventListener("click", function(){
+                    windowOnClick();
+                });
+            }
         }
         
         function windowOnClick(event) {
@@ -68,7 +79,7 @@
         }
         
         //                  ScoreBoard Table Creation
-        function createModal(){
+        function createTable(){
             let userDetails = JSON.parse(localStorage.getItem('users'));
             userDetails = sortByScore(userDetails);
             if(userDetails.length == 0) return;
@@ -134,7 +145,7 @@
 
         let ShowResult = document.createElement('button');
         ShowResult.classList.add('button', 'result');
-        ShowResult.setAttribute('onclick', 'createModal()');
+        ShowResult.setAttribute('onclick', 'createTable()');
         ShowResult.innerText = 'Leaderboard'
 
 
@@ -151,7 +162,6 @@
         
         resultButton.addEventListener("click", toggleModal);
         closeBtnEvent.addEventListener("click", toggleModal);
-        modalField.addEventListener("click", windowOnClick);
             
 
     </script>
