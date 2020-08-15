@@ -177,6 +177,7 @@ function gameOver(won){
         users[users.length - 1][name] = 0;
     }
     localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('isVerified', true);
     window.open('index.html', '_self')
 }
 
