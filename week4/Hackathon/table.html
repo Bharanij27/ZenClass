@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="styles.css"></script>
+</head>
+<body>
+    <script>
+        function addtableHeader(value){
+            let header = document.createElement('th');
+            header.innerText = value;
+            header.setAttribute('scope', 'col');
+            return header;
+        }
+
+        function sortByScore(details){
+            let sorted = details.sort(function(a, b){
+                if(b[Object.keys(b)[0]] == a[Object.keys(a)[0]]) return Object.keys(a)[0] - Object.keys(b)[0];
+                return b[Object.keys(b)[0]] - a[Object.keys(a)[0]];
+            })
+            return sorted;
+        }
+        
+        //                  ScoreBoard Table Creation
+        function createModal(){
+            let userDetails = JSON.parse(localStorage.getItem('users'));
+            userDetails = sortByScore(userDetails);
+            if(userDetails.length == 0) return;
+            if(modalContent.lastElementChild.nodeName == 'TABEL'){
+                modalContent.removeChild(modalContent.lastElementChild)
+            }
+
+            let table =document.createElement('tabel');
+            let thead = document.createElement('thead');
+            
+            let headrow = document.createElement('tr');
+            
+            let userRank = addtableHeader('Rank');
+            let userName = addtableHeader('Name');
+            let userScore = addtableHeader('Score');
+            
+            headrow.append(userRank, userName, userScore);
+            thead.append(headrow);
+            
+            let tbody = document.createElement('tbody');
+            for(let i in userDetails){
+                let userInfo = userDetails[i];
+                let userName = Object.keys(userInfo)[0];
+
+                let tr = document.createElement('tr');
+
+                let userNum = document.createElement('td');
+                userNum.innerText = +i + 1;
+                tr.append(userNum);
+
+                let name = document.createElement('td');
+                name.innerText = userName;
+                tr.append(name);
+
+                let score = document.createElement('td');
+                score.innerText = userInfo[userName];
+                tr.append(score);
+                tbody.append(tr);
+            }
+            table.append(thead, tbody)
+            modalContent.append(table)
+        }
+    </script>
+</body>
+</html>
