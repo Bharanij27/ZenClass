@@ -540,7 +540,7 @@ let note = document.createElement('div');
 note.innerText = 'Note';
 
 let list0 = document.createElement('li');
-list0.innerText = 'The time limit to solve this puzzle is only 4 Minutes after that you will be redirected Home Page';
+list0.innerText = 'The time limit to solve this puzzle is only 4 Minutes after that you will be redirected to Home Page';
 
 let list1 = document.createElement('li');
 list1.innerText = 'Click on the boxes to change the value';
