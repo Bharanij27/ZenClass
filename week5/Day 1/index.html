@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 {
+            display: inline-block;
+            position: absolute;
+            margin: 0;
+            justify-content: center;
+            top: 35%;
+            margin-right: -50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="width: 200px;">
+        <h1></h1>
+    </div>
+    <script>
+        let count = 10
+        let field = document.querySelector('h1');
+
+        function countDown(callback) {
+            setTimeout(() => {
+                if (count == 0) field.innerText = 'Happy Independence Day';
+                else{
+                    field.innerText = count--;
+                    callback()
+                }
+            }, 1000);
+        }
+
+        countDown(function () {
+            countDown(function () {
+                countDown(function () {
+                    countDown(function () {
+                        countDown(function () {
+                            countDown(function () {
+                                countDown(function () {
+                                    countDown(function () {
+                                        countDown(function () {
+                                            countDown(function (){
+                                                countDown();
+                                            });
+                                        });    
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
