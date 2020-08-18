@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Hell</title>
+    <style>
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        td {
+            background-color: #b8daff;
+            border: 1px solid black;
+            width: 400px;
+            padding-left: 10%;
+        }
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>All Country</h1>
+    </div>
+    <script>
+        function xmlReequest(url) {
+            return new Promise(function (resolve, reject) {
+                let req = new XMLHttpRequest();
+                req.open("GET", url, true);
+
+                req.onload = function () {
+                    if (req.status >= 200 && req.status < 300) {
+                        resolve(req.responseText);
+                    } else {
+                        reject(req.statusText);
+                    }
+                };
+                req.onerror = function () {
+                    reject(req.statusText);
+                }
+
+                req.send();
+            });
+        }
+        let table = document.createElement('table');
+        table.setAttribute('cellspacing', 0)
+        let header = table.createTHead();
+        
+        let row= header.insertRow(0);
+        row.insertCell(0).innerHTML = 'NAME';
+        row.insertCell(1).innerHTML = 'Capital';
+        row.insertCell(2).innerHTML = 'Region';
+        row.insertCell(3).innerHTML = 'Flag';
+
+        table.append(header);
+        let tbody = document.createElement('tbody');
+
+        let data = xmlReequest('https://restcountries.eu/rest/v2/all')
+            .then((allCountry) => {
+                allCountry = JSON.parse(allCountry)
+                allCountry.forEach(country => {
+                    let row = table.insertRow();
+                    row.insertCell(0).innerHTML = country.name;
+                    row.insertCell(1).innerHTML = country.capital || 'None';
+                    row.insertCell(2).innerHTML = country.region || 'None';
+                    let image = document.createElement('img');
+                    image.setAttribute('src', country.flag);
+                    row.insertCell(3).append(image);
+                    tbody.append(row);
+                });
+                table.append(tbody);
+                document.getElementsByClassName('container')[0].append(table);
+                console.log(allCountry)
+            }).catch((err) => {
+                console.log(err)
+            });
+    </script>
+</body>
+
+</html>
