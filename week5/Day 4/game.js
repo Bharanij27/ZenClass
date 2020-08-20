@@ -16,19 +16,33 @@ async function getDataFromAPI() {
 
 function createContent() {
     let content = document.createElement("div");
-    content.classList.add("content");
+    content.classList.add("content", 'container');
 
     let head = document.createElement("div");
     head.classList.add("head");
 
-    let qnum = document.createElement("div");
-    qnum.classList.add("qnum");
+    let questionRegion = document.createElement('div');
+    questionRegion.classList.add('questionRegion');
 
+    let questNum = document.createElement('div');
+    questNum.classList.add("qnum");
+    
+    let progressField = document.createElement('div');
+    progressField.classList.add('progress', 'progress-style')
+
+    let progressBar = document.createElement('div');
+    progressBar.setAttribute('class', 'progress-bar');
+    progressBar.setAttribute('role', 'progressbar');
+
+    progressField.append(progressBar);
+
+    questionRegion.append(questNum, progressField);
+    
     let scoreField = document.createElement("div");
     scoreField.classList.add("score");
     scoreField.innerText = 'Score : ' + score;
 
-    head.append(qnum, scoreField);
+    head.append(questionRegion, scoreField);
 
     let question = document.createElement("div");
     question.classList.add("question");
@@ -65,7 +79,17 @@ let currentIndex = 0, score = 0;
 function nextQuestion(num) {
     currentIndex = num;
 
-    document.querySelector('.qnum').innerText = "Question " + (num + 1) + ' / 10';
+    let progressBar = document.querySelector('.progress-bar')
+    
+    document.querySelector('.qnum').innerText = 'Question ' + (num + 1) + ' / 10';
+
+    
+    progressBar.setAttribute('aria-valuenow', '' + (num +1 ) * 10 + '');
+    progressBar.setAttribute('aria-valuemin', '' + (num +1 ) * 10 + '');
+    progressBar.setAttribute('aria-valuemin', '100');
+    progressBar.setAttribute('style', 'width: ' + ((num +1 ) * 10) + '%');
+
+
     document.querySelector('.question').innerHTML = questionList[num].question;
 
     let array = [].concat(questionList[num].incorrect_answers, questionList[num].correct_answer)
@@ -103,7 +127,7 @@ function createBox(num){
 
 function createAnswer(value){
     let ans = document.createElement('div');
-    ans.classList.add('ans')
+    ans.classList.add('choice-text')
     ans.innerHTML = value;
     return ans;
 }
@@ -154,12 +178,6 @@ function isCorrect(selected, chosen){
 
 function endGame(){
     localStorage.setItem('currentScore', score);
-    let maxScore = localStorage.getItem('maxScore') || 0;
-    if(maxScore < score){
-        localStorage.setItem('maxScore', score);
-        localStorage.setItem('maxScoreer', userName);
-
-    }
     window.open('end.html', '_self');
 }
 

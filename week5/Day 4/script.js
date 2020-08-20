@@ -1,13 +1,9 @@
-function startGame(){
-  let userName = prompt('Enter Your Name');
-  if(userName){
-    let name = userName.trim();
-    localStorage.setItem('userName', name);
-    window.open('game.html', '_self');
-  }
+function startGame() {
+  localStorage.setItem('userName', true);
+  window.open('game.html', '_self');
 }
 
-function getHighScore(){
+function getHighScore() {
   let highScore = localStorage.getItem('maxScore') || 0;
   let userName = localStorage.getItem('maxScoreer') || 'Computer';
   alert(userName + ' ' + highScore);
@@ -26,6 +22,7 @@ gameTitle.innerText = "Quick Quiz";
 
 let startButton = document.createElement("button");
 startButton.classList.add("btn", "btn-primary", "button");
+startButton.setAttribute("id", "play");
 startButton.setAttribute("onclick", "startGame()");
 startButton.innerText = "Play";
 
@@ -33,6 +30,7 @@ startButton.innerText = "Play";
 
 let ShowResult = document.createElement("button");
 ShowResult.classList.add("btn", "btn-primary", "button");
+ShowResult.setAttribute("id", "highScores");
 ShowResult.setAttribute("onclick", "getHighScore()");
 ShowResult.innerText = "High Scores";
 
