@@ -89,7 +89,7 @@
             let field = document.getElementsByClassName(element)[0];
             while (field.children.length != 1) field.removeChild(field.lastElementChild);
             let paraTag = document.createElement('p');
-            paraTag.innerText = JSON.stringify(result);
+            paraTag.innerText = message +JSON.stringify(result);
             field.append(paraTag)
         }
     </script>
