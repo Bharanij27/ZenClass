@@ -90,6 +90,8 @@
             while(tableField.children.length != 0) tableField.removeChild(tableField.firstElementChild);
             document.querySelector('.totalCount').innerText = '' ;
 
+            let available = document.querySelector('.available');
+            while(available.children.length != 0) available.removeChild(available.firstElementChild);
 
             let tableContianer = document.createElement('div');
             tableContianer.classList.add('table-contianer');
@@ -130,11 +132,14 @@
 
         function showResults(){
             let result = petShop.enqueryStatus();
+            let available = document.querySelector('.available');
             result.forEach((data, index)=>{
-                if(data.count == 0) console.log(`no data for query ${index + 1 }`);
+                let para = document.createElement('p');
+                if(data.count == 0) para.innerText = `no data for query ${index + 1 }`;
                 else {
-                    console.log(`${data.count} result found for query ${index + 1 }` + JSON.stringify(petShop.query[index])); 
+                    para.innerText = `${data.count} result found for query ${index + 1 }` + JSON.stringify(petShop.query[index]); 
                 }
+                available.append(para);
             })
         }
     </script>
