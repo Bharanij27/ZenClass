@@ -147,6 +147,4 @@ petShop.insert(pet5);
 
 
 petShop.storeEnquiry([{color: 'white', type : 'dog'}]);
-petShop.storeEnquiry([{type : 'cat', color : 'black'}]);
-console.log(petShop.enqueryStatus());
-console.log(petShop.count());
+

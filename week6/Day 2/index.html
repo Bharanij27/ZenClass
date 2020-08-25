@@ -36,11 +36,18 @@
         <h1>PET ADAPTATION SHOP</h1>
         <div class="button-portion">
             <button class="btn btn-primary" onclick="createTable()">Make New Request</button>
+            <button class="btn btn-primary" onclick="totalPets()">Total Pets</button>
         </div>
+        <div class="totalCount"></div>
         <div class="tableField"></div>
         <div class="available"></div>
     </div>
     <script>
+        function totalPets(){
+            let count = document.querySelector('.totalCount');
+            count.innerText = JSON.stringify(petShop.count());
+        }
+  
         function processQuery(){
             let tableHead = document.querySelectorAll('thead tr th'); 
             let tableRow = document.querySelectorAll('tbody tr');
@@ -78,8 +85,11 @@
         }
 
         function createTable() {
+
             let tableField = document.getElementsByClassName('tableField')[0];
-            if(tableField.children.length) tableField.removeChild(tableField.firstElementChild);
+            while(tableField.children.length != 0) tableField.removeChild(tableField.firstElementChild);
+            document.querySelector('.totalCount').innerText = '' ;
+
 
             let tableContianer = document.createElement('div');
             tableContianer.classList.add('table-contianer');
@@ -123,7 +133,7 @@
             result.forEach((data, index)=>{
                 if(data.count == 0) console.log(`no data for query ${index + 1 }`);
                 else {
-                    console.log(`${data.count} result found for query ${index + 1 }`) 
+                    console.log(`${data.count} result found for query ${index + 1 }` + JSON.stringify(petShop.query[index])); 
                 }
             })
         }
