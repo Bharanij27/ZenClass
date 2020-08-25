@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp2544025.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        button {
+            display: inline !important;
+        }
+
+        tbody{
+            background-color: lightblue;
+        }
+
+        .mid {
+            justify-content: center !important;
+            display: grid !important;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="index.js"></script>
+    <div class="contianer text-center mid mt-5">
+        <h1>PET ADAPTATION SHOP</h1>
+        <div class="button-portion">
+            <button class="btn btn-primary" onclick="createTable()">Make New Request</button>
+        </div>
+        <div class="tableField"></div>
+        <div class="available"></div>
+    </div>
+    <script>
+        function processQuery(){
+            let tableHead = document.querySelectorAll('thead tr th'); 
+            let tableRow = document.querySelectorAll('tbody tr');
+            console.log(tableRow)
+            let queries = [];
+            tableRow.forEach(inputs => {
+                let row = inputs.children;
+                let data = {}
+                for(let i = 0; i < 5; i++){
+                    console.log(row[i].children[0].value)
+                    data[tableHead[i].innerText.toLowerCase()] = row[i].children[0].value;
+                }
+                queries.push(data)
+
+            });
+            petShop.storeEnquiry(queries);
+            
+            let tableField = document.getElementsByClassName('tableField')[0];
+            tableField.removeChild(tableField.firstElementChild);
+            console.log(petShop)
+        }
+
+        function createNewRow(values, rowValue){
+            let tr = document.createElement('tr');
+            for(let i = 0 ; i < 5; i++){
+                let th = document.createElement(rowValue);
+                th.setAttribute('scope', 'col');
+                if(values && values[i]) th.innerText = values[i];
+                else{
+                    th.innerHTML = '<input type="text" class="form-control" aria-describedby="basic-addon3">'
+                }
+                tr.append(th);
+            }
+            return tr;
+        }
+
+        function createTable() {
+            let tableField = document.getElementsByClassName('tableField')[0];
+            if(tableField.children.length) tableField.removeChild(tableField.firstElementChild);
+
+            let tableContianer = document.createElement('div');
+            tableContianer.classList.add('table-contianer');
+
+            let plusButton = document.createElement('button');
+            plusButton.classList.add('btn', 'btn-light');
+            plusButton.innerText = '+';
+
+            plusButton.onclick = function(){
+                let table = document.getElementsByTagName('tbody')[0];
+                table.append(createNewRow(null, 'td'));
+            }
+
+            let table = document.createElement('table');
+            table.classList.add('table');
+
+            let thead = document.createElement('thead');
+            thead.classList.add('thead-dark');
+
+            let headContent = ['Type', 'Color', 'Age', 'Breed', 'Location'];
+            let headRow = createNewRow(headContent, 'th')
+            thead.append(headRow);
+
+            let tbody = document.createElement('tbody');
+
+            table.append(thead, tbody)
+
+            let submit = document.createElement('button');
+            submit.classList.add('btn', 'btn-light', 'mr-3');
+            submit.innerText = 'Submit';
+            submit.onclick = function(){
+                processQuery();
+                showResults();
+            }
+            tableContianer.append(table, submit, plusButton);
+            tableField.append(tableContianer)
+        }
+
+        function showResults(){
+            let result = petShop.enqueryStatus();
+            result.forEach((data, index)=>{
+                if(data.count == 0) console.log(`no data for query ${index + 1 }`);
+                else {
+                    console.log(`${data.count} result found for query ${index + 1 }`) 
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
