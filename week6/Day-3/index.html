@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Tv</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script async src="https://www.youtube.com/iframe_api"></script>
     <style>
-        body{
+        body {
             background-color: black;
             overflow: hidden;
         }
-        
+
         .tv {
             display: block;
             top: 20%;
             position: relative;
         }
 
-        .remote{
+        .remote {
             transform: scale(5.5);
             position: relative;
             width: 100%;
@@ -27,30 +28,48 @@
             z-index: inherit;
         }
 
-        area{
+        area {
             cursor: pointer;
         }
 
-        .margin-none{
+        .margin-none {
             height: 100vh;
             overflow: hidden;
         }
+
+        #my-video {
+            position: absolute;
+            top: 117px;
+            left: 215px;
+            width: 775px;
+            height: 440px;
+        }
     </style>
-</head> 
+</head>
 
 <body>
-    <img src="./assests/tv&remote.png" alt="tv.jpg" usemap="#image-map">
-    <map name=image-map>
-        <area shape="circle" coords="1135,317,17" id="power" alt="as.jpg" onclick="togglePower()">
-        <area shape="circle" coords="1173,134,14" id="mute" alt="as.jpg" onclick="mute()">
-        <area shape="circle" coords="1099,134,13" id="mute" alt="as.jpg" onclick="togglePower()">
-        <area shape="rect" coords="1117,305,1085,329"  onclick="reduceVolume()">
-        <area shape="rect" coords="1187,304,1155,328" alt="as.jpg" onclick="IncreaseVolume()">
-        <area shape="poly" coords="1096,180,1106,185,1115,190,1114,205,1114,217,1082,220,1087,183,1090,190,1084,201" alt="as.jpg" onclick="reduceVolume()">
-        <area shape="poly" coords="1167,182,1177,187,1186,192,1185,207,1185,219,1153,222,1158,185,1161,192,1155,203" alt="as.jpg" onclick="IncreaseVolume()">
-        <area shape="poly" coords="1126,146,1136,151,1145,156,1149,156,1153,184,1115,188,1117,149,1116,155,1110,162,1111,166,1111,162" alt="as.jpg" onclick="channelForwar()">
-        <area shape="poly" coords="1127,218,1137,223,1146,228,1155,221,1154,256,1116,256,1118,221,1117,227,1111,234,1112,238,1112,242" alt="as.jpg" onclick="channelBackward()">
-    </map>
+    <div id="first-div">
+        <img src="./assests/tv&remote.png" alt="tv.jpg" usemap="#image-map">
+        <map name=image-map>
+            <area shape="circle" coords="1135,317,17" id="power" alt="as.jpg" onclick="createFrame()">
+            <area shape="circle" coords="1173,134,14" id="mute" alt="as.jpg" onclick="mute()">
+            <area shape="circle" coords="1135,207,20" id="mute" alt="as.jpg" onclick="pause()">
+            <area shape="circle" coords="1099,134,13" id="mute" alt="as.jpg" onclick="togglePower()">
+            <area shape="rect" coords="1117,305,1085,329" onclick="reduceVolume()">
+            <area shape="rect" coords="1187,304,1155,328" alt="as.jpg" onclick="IncreaseVolume()">
+            <area shape="poly" coords="1096,180,1106,185,1115,190,1114,205,1114,217,1082,220,1087,183,1090,190,1084,201"
+                alt="as.jpg" onclick="reduceVolume()">
+            <area shape="poly" coords="1167,182,1177,187,1186,192,1185,207,1185,219,1153,222,1158,185,1161,192,1155,203"
+                alt="as.jpg" onclick="IncreaseVolume()">
+            <area shape="poly"
+                coords="1126,146,1136,151,1145,156,1149,156,1153,184,1115,188,1117,149,1116,155,1110,162,1111,166,1111,162"
+                alt="as.jpg" onclick="channelForwar()">
+            <area shape="poly"
+                coords="1127,218,1137,223,1146,228,1155,221,1154,256,1116,256,1118,221,1117,227,1111,234,1112,238,1112,242"
+                alt="as.jpg" onclick="channelBackward()">
+        </map>
+        <iframe id="my-video" src="" frameborder="0"></iframe>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
