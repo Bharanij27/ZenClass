@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .blackbg {}
+
+        input {
+            text-align: center;
+        }
+
+        .active-one {
+            color: #007bff;
+        }
+
+        .imageField {
+            display: contents;
+            justify-items: center;
+        }
+
+        .songs {
+            cursor: pointer;
+            display: inline-flex;
+            background-color: lightblue;
+        }
+
+        .content {
+            display: inline-block;
+            position: relative;
+            top: 25px;
+        }
+
+        .content-span {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            display: inline-flex;
+            float: left;
+        }
+
+        .songTitle,
+        .subTitle {
+            justify-content: flex-start;
+            display: flex;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+
+        .audio-palyer {
+            position: absolute;
+        }
+
+        audio {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .songs image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            top: 50px;
+            left: 50px;
+            box-shadow: inset -4px 20px 79px 0px rgba(0,0,0,0.75);
+        }
+
+        .songs:hover image {
+            opacity: 0.3;
+        }
+
+        .songs:hover .middle {
+            opacity: 1;
+        }
+
+        .play {
+            font-size: 40px;
+            padding: 16px 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m-3">
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="top">Top</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="recommend">Recommanded</a>
+                    </li>
+                    <li class="nav-item">
+                        <input type="text" class="nav-link form-control nav-link" placeholder="search" id="search" />
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body blackbg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col" id="song-container">
+                            <div class="song-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="container auido-player">
+        <div class="row">
+            <div class="col">
+                <audio controls src="" type=""></audio>
+            </div>
+        </div>
+    </div>
+    <script src="zoo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
