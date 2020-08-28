@@ -159,7 +159,7 @@ let createPlayBaord = () => {
     while (t2.children.length) t2.removeChild(t2.firstElementChild)
 
     t2.append(table2);
-
+    match = new Cricket()
 }
 createPlayBaord();
 let match = new Cricket();
