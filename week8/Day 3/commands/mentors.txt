@@ -1,0 +1,47 @@
+ db.mentors.insertMany([
+     {
+         "name" : "mahesh",
+         "email" : "mahesh@gmail.com",
+         "studentsCountForMentors" : 1
+     },
+     {
+         "name" : "Mani",
+         "email" : "mani@gmail.com",
+         "studentsCountForMentors" : 1
+     },
+     {
+         "name" : "Hiren",
+         "email" : "hiren@gmail.com",
+         "studentsCountForMentors" : 1
+     }
+ ])
+
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5a2561960659fffff6bafe"),
+                ObjectId("5f5a2561960659fffff6baff"),
+                ObjectId("5f5a2561960659fffff6bb00")
+        ]
+}
+
+
+ db.mentors.find({}).pretty();
+{
+        "_id" : ObjectId("5f5a232ada0bf77aec683b03"),
+        "name" : "mahesh",
+        "email" : "mahesh@gmail.com",
+        "studentsCountForMentors" : 1
+}
+{
+        "_id" : ObjectId("5f5a232ada0bf77aec683b04"),
+        "name" : "Mani",
+        "email" : "mani@gmail.com",
+        "studentsCountForMentors" : 1
+}
+{
+        "_id" : ObjectId("5f5a232ada0bf77aec683b05"),
+        "name" : "Hiren",
+        "email" : "hiren@gmail.com",
+        "studentsCountForMentors" : 1
+}

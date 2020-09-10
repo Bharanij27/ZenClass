@@ -1,0 +1,70 @@
+ db.course.insertMany([
+     {
+         "courseName" : "JavaScript",
+         "courseCategory" : "Web  Development",
+         "courseDuration" : 90,
+         courseAuthorName : "Mani"
+     },
+     {
+         "courseName" : "TypeScript",
+         "courseCategory" : "Web  Development",
+         "courseDuration" : 110,
+         courseAuthorName : "Hiren"
+     },
+     {
+         "courseName" : "Python",
+         "courseCategory" : "AI",
+         "courseDuration" : 80,
+         courseAuthorName : "Mahesh"
+     },
+     {
+         "courseName" : "Java",
+         "courseCategory" : "Application  Development",
+         "courseDuration" : 80,
+         courseAuthorName : "Mani"
+     }
+ ])
+
+
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5a2581960659fffff6bb01"),
+                ObjectId("5f5a2581960659fffff6bb02"),
+                ObjectId("5f5a2581960659fffff6bb03"),
+                ObjectId("5f5a2581960659fffff6bb04")
+        ]
+}
+
+
+db.course.find({}).pretty();
+{
+        "_id" : ObjectId("5f5a2581960659fffff6bb01"),
+        "courseName" : "JavaScript",
+        "courseCategory" : "Web  Development",
+        "courseDuration" : 90,
+        "courseAuthorName" : "Mani"
+}
+{
+        "_id" : ObjectId("5f5a2581960659fffff6bb02"),
+        "courseName" : "TypeScript",
+        "courseCategory" : "Web  Development",
+        "courseDuration" : 110,
+        "courseAuthorName" : "Hiren"
+}
+{
+        "_id" : ObjectId("5f5a2581960659fffff6bb03"),
+        "courseName" : "Python",
+        "courseCategory" : "AI",
+        "courseDuration" : 80,
+        "courseAuthorName" : "Mahesh"
+}
+{
+        "_id" : ObjectId("5f5a2581960659fffff6bb04"),
+        "courseName" : "Java",
+        "courseCategory" : "Application  Development",
+        "courseDuration" : 80,
+        "courseAuthorName" : "Mani"
+}
+
+

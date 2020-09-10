@@ -1,0 +1,84 @@
+ db.codekata.insertMany([
+     {
+         "codekataCategoryName" : "Array",
+         "codekataQuestionId" : "Array01",
+         "codekataQuestionStatus" : "Not Completed"
+     },
+     {
+         "codekataCategoryName" : "Array",
+         "codekataQuestionId" : "Array02",
+         "codekataQuestionStatus" : "Not Completed"
+     },
+     {
+         "codekataCategoryName" : "String",
+         "codekataQuestionId" : "String01",
+         "codekataQuestionStatus" : "Not Completed"
+     },
+     {
+         "codekataCategoryName" : "String",
+         "codekataQuestionId" : "String02",
+         "codekataQuestionStatus" : "Not Completed"
+     },
+     {
+         "codekataCategoryName" : "Math",
+         "codekataQuestionId" : "Math01",
+         "codekataQuestionStatus" : "Not Completed"
+     },
+     {
+         "codekataCategoryName" : "Math",
+         "codekataQuestionId" : "Math02",
+         "codekataQuestionStatus" : "Not Completed"
+     }
+ ])
+
+
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5a2bae960659fffff6bb0d"),
+                ObjectId("5f5a2bae960659fffff6bb0e"),
+                ObjectId("5f5a2bae960659fffff6bb0f"),
+                ObjectId("5f5a2bae960659fffff6bb10"),
+                ObjectId("5f5a2bae960659fffff6bb11"),
+                ObjectId("5f5a2bae960659fffff6bb12")
+        ]
+}
+
+
+db.codekata.find({}).pretty();
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb0d"),
+        "codekataCategoryName" : "Array",
+        "codekataQuestionId" : "Array01",
+        "codekataQuestionStatus" : "Not Completed"
+}
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb0e"),
+        "codekataCategoryName" : "Array",
+        "codekataQuestionId" : "Array02",
+        "codekataQuestionStatus" : "Not Completed"
+}
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb0f"),
+        "codekataCategoryName" : "String",
+        "codekataQuestionId" : "String01",
+        "codekataQuestionStatus" : "Not Completed"
+}
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb10"),
+        "codekataCategoryName" : "String",
+        "codekataQuestionId" : "String02",
+        "codekataQuestionStatus" : "Not Completed"
+}
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb11"),
+        "codekataCategoryName" : "Math",
+        "codekataQuestionId" : "Math01",
+        "codekataQuestionStatus" : "Not Completed"
+}
+{
+        "_id" : ObjectId("5f5a2bae960659fffff6bb12"),
+        "codekataCategoryName" : "Math",
+        "codekataQuestionId" : "Math02",
+        "codekataQuestionStatus" : "Not Completed"
+}

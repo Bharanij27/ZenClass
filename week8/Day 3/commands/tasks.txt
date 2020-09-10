@@ -1,0 +1,78 @@
+ db.tasks.insertMany([
+     {
+         "taskName" : "Callback",
+         "taskType" : "callback practice",
+         "taskgivenDate" : new Date("2020-08-09"),
+         taskDeadline : new Date("2020-08-10"),
+         taskUrl : "https://github.com/"
+     },
+     {
+         "taskName" : "Promise",
+         "taskType" : "promise practice",
+         "taskgivenDate" : new Date("2020-08-10"),
+         taskDeadline : new Date("2020-08-11"),
+         taskUrl : "https://github.com/"
+     },
+     {
+         "taskName" : "Map in Python",
+         "taskType" : "understanding of map",
+         "taskgivenDate" : new Date("2020-08-09"),
+         taskDeadline : new Date("2020-08-10"),
+         taskUrl : "https://github.com/"
+     },
+     {
+         "taskName" : "Inheritance",
+         "taskType" : "OOPS concept",
+         "taskgivenDate" : new Date("2020-08-09"),
+         taskDeadline : new Date("2020-08-10"),
+         taskUrl : "https://github.com/"
+     }
+ ])
+
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5a352c960659fffff6bb23"),
+                ObjectId("5f5a352c960659fffff6bb24"),
+                ObjectId("5f5a352c960659fffff6bb25"),
+                ObjectId("5f5a352c960659fffff6bb26")
+        ]
+}
+
+
+
+
+{
+        "_id" : ObjectId("5f5a2798960659fffff6bb05"),
+        "taskName" : "Callback",
+        "taskType" : "callback practice",
+        "taskgivenDate" : ISODate("1970-01-01T00:00:00Z"),
+        "taskDeadline" : ISODate("1970-01-01T00:00:00Z"),
+        "taskUrl" : "https://github.com/"
+}
+{
+        "_id" : ObjectId("5f5a2798960659fffff6bb06"),
+        "taskName" : "Promise",
+        "taskType" : "promise practice",
+        "taskgivenDate" : ISODate("1970-01-01T00:00:00Z"),
+        "taskDeadline" : ISODate("1970-01-01T00:00:00Z"),
+        "taskUrl" : "https://github.com/"
+}
+{
+        "_id" : ObjectId("5f5a2798960659fffff6bb07"),
+        "taskName" : "Map in Python",
+        "taskType" : "understanding of map",
+        "taskgivenDate" : ISODate("1970-01-01T00:00:00Z"),
+        "taskDeadline" : ISODate("1970-01-01T00:00:00Z"),
+        "taskUrl" : "https://github.com/"
+}
+{
+        "_id" : ObjectId("5f5a2798960659fffff6bb08"),
+        "taskName" : "Inheritance",
+        "taskType" : "OOPS concept",
+        "taskgivenDate" : ISODate("1970-01-01T00:00:00Z"),
+        "taskDeadline" : ISODate("1970-01-01T00:00:00Z"),
+        "taskUrl" : "https://github.com/"
+}
+
+ 

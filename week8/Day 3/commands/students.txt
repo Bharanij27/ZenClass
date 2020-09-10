@@ -1,0 +1,115 @@
+db.students.insertMany([
+     {
+         name : "Bharani",
+         "email" : "bharani@gmail.com",
+         "mobile" : 744895623,
+         "dob" : new Date ("1999-07-27"),
+         "occupation" : "Student",
+         "mentor" : ObjectId("5f5a2561960659fffff6bafe"),
+         "course" : ObjectId("5f5a2581960659fffff6bb01"),
+         "attendance" : [
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-08-08")
+             },
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-08-09")
+             }
+         ],
+         "dailyTasks" : [
+             ObjectId("5f5a352c960659fffff6bb23"),
+             ObjectId("5f5a352c960659fffff6bb24")
+         ],
+         "companyDrive" : [
+             ObjectId("5f5a3514960659fffff6bb1f"),
+             ObjectId("5f5a3514960659fffff6bb21")
+         ],
+         "codeKata" : [
+             ObjectId("5f5a2bae960659fffff6bb0d"),
+             ObjectId("5f5a2bae960659fffff6bb0e"),
+             ObjectId("5f5a2bae960659fffff6bb0f"),
+             ObjectId("5f5a2bae960659fffff6bb10"),
+             ObjectId("5f5a2bae960659fffff6bb11"),
+             ObjectId("5f5a2bae960659fffff6bb12")
+         ]
+     },
+     {
+         name : "Anitha",
+         "email" : "anitha@gmail.com",
+         "mobile" : 744005600,
+         "dob" : new Date ("1999-01-29"),
+         "occupation" : "Student",
+         "mentor" : ObjectId("5f5a2561960659fffff6baff"),
+         "course" : ObjectId("5f5a2581960659fffff6bb02"),
+         "attendance" : [
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-08-08")
+             },
+             {
+                 attendanceStatus : "Not Present",
+                 attendanceDate : new Date("2020-08-09")
+             }
+         ],
+         "dailyTasks" : [
+             ObjectId("5f5a352c960659fffff6bb23"),
+             ObjectId("5f5a352c960659fffff6bb24")
+         ],
+         "companyDrive" : [
+             ObjectId("5f5a3514960659fffff6bb20"),
+             ObjectId("5f5a3514960659fffff6bb1f")
+         ],
+         "codeKata" : [
+             ObjectId("5f5a2bae960659fffff6bb0d"),
+             ObjectId("5f5a2bae960659fffff6bb0e"),
+             ObjectId("5f5a2bae960659fffff6bb0f"),
+             ObjectId("5f5a2bae960659fffff6bb10"),
+             ObjectId("5f5a2bae960659fffff6bb11"),
+             ObjectId("5f5a2bae960659fffff6bb12")
+         ]
+     },
+     {
+         name : "Mohan",
+         "email" : "mohan@gmail.com",
+         "mobile" : 741235610,
+         "dob" : new Date ("1998-08-01"),
+         "occupation" : "Engineer",
+         "mentor" : ObjectId("5f5a2561960659fffff6bb00"),
+         "course" : ObjectId("5f5a2581960659fffff6bb03"),
+         "attendance" : [
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-07-28")
+             },
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-07-29")
+             },
+             {
+                 attendanceStatus : "Present",
+                 attendanceDate : new Date("2020-07-30")
+             }
+         ],
+         "dailyTasks" : ObjectId("5f5a352c960659fffff6bb26"),
+         "companyDrive" : ObjectId("5f5a3514960659fffff6bb20"),
+         "codeKata" : [
+             ObjectId("5f5a2bae960659fffff6bb0d"),
+             ObjectId("5f5a2bae960659fffff6bb0e"),
+             ObjectId("5f5a2bae960659fffff6bb0f"),
+             ObjectId("5f5a2bae960659fffff6bb10"),
+             ObjectId("5f5a2bae960659fffff6bb11"),
+             ObjectId("5f5a2bae960659fffff6bb12")
+         ]
+     }
+ ]);
+
+ 
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5a3ec3b2c60c66c6456ed6"),
+                ObjectId("5f5a3ec3b2c60c66c6456ed7"),
+                ObjectId("5f5a3ec3b2c60c66c6456ed8")
+        ]
+}
