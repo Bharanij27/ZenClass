@@ -1,0 +1,159 @@
+db.customers.find().pretty();
+-----------------------------------------------------------------
+{
+        "_id" : ObjectId("5f5b59706dcbb02e3416d18f"),
+        "cus_Id" : "cust01",
+        "customer_name" : "Anthony",
+        "E-mail" : "anthony@gmail.com",
+        "phone_no" : 7448559632,
+        "Address" : {
+                "door_no" : "40/20",
+                "street_name" : "Gandhiji street",
+                "district" : "Chennai",
+                "zipcode" : 600021
+        }
+}
+{
+        "_id" : ObjectId("5f5b59706dcbb02e3416d190"),
+        "cus_Id" : "cust02",
+        "customer_name" : "Baasha",
+        "E-mail" : "baasha@gmail.com",
+        "phone_no" : 7441235432,
+        "Address" : {
+                "door_no" : "5/10",
+                "street_name" : "Netaji street",
+                "district" : "Mumbai",
+                "zipcode" : 501021
+        }
+}
+{
+        "_id" : ObjectId("5f5b59706dcbb02e3416d191"),
+        "cus_Id" : "cust03",
+        "customer_name" : "Billa",
+        "E-mail" : "billa@gmail.com",
+        "phone_no" : 7478932532,
+        "Address" : {
+                "door_no" : "4A",
+                "street_name" : "Nehru street",
+                "district" : "Kolkata",
+                "zipcode" : 430421
+        }
+}
+
+
+
+
+db.orders.find().pretty();
+-------------------------------------------------------------------------
+{
+        "_id" : ObjectId("5f5b53faa19fba583b18a6e5"),
+        "customer_name" : "Anthony",
+        "customer_Info" : ObjectId("5f5b59706dcbb02e3416d18f"),
+        "ordered_date" : ISODate("2020-09-11T00:00:00Z"),
+        "ordered_petInfo" : ObjectId("5f5b4fb16dcbb02e3416d187"),
+        "order_Id" : "Order001",
+        "total_price" : 1000,
+        "arriva_date" : ISODate("2020-09-15T00:00:00Z")
+}
+{
+        "_id" : ObjectId("5f5b53faa19fba583b18a6e6"),
+        "customer_name" : "Baasha",
+        "customer_Info" : ObjectId("5f5b59706dcbb02e3416d190"),
+        "ordered_date" : ISODate("2020-09-01T00:00:00Z"),
+        "ordered_petInfo" : [
+                ObjectId("5f5b4fb16dcbb02e3416d189"),
+                ObjectId("5f5b4fb16dcbb02e3416d18a")
+        ],
+        "order_Id" : "Order002",
+        "total_price" : 1700,
+        "arriva_date" : ISODate("2020-09-05T00:00:00Z")
+}
+{
+        "_id" : ObjectId("5f5b53faa19fba583b18a6e7"),
+        "customer_name" : "Billa",
+        "customer_Info" : ObjectId("5f5b59706dcbb02e3416d191"),
+        "ordered_date" : ISODate("2020-09-28T00:00:00Z"),
+        "ordered_petInfo" : ObjectId("5f5b4fb16dcbb02e3416d18b"),
+        "order_Id" : "Order003",
+        "total_price" : 1400,
+        "arriva_date" : ISODate("2020-10-03T00:00:00Z")
+}
+
+
+db.petInfo.find().pretty();
+--------------------------------------------------------
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d187"),
+        "id" : "01",
+        "name" : "Jimmy",
+        "type" : "Dog",
+        "breed" : "Labrador",
+        "age" : "2 Months",
+        "previous_owner" : "John",
+        "price" : 1000
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d188"),
+        "id" : "02",
+        "name" : "Jack",
+        "type" : "Dog",
+        "breed" : "Buldog",
+        "age" : "8 Months",
+        "price" : 800
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d189"),
+        "id" : "03",
+        "name" : "Kitty",
+        "type" : "Cat",
+        "breed" : "American Curl",
+        "age" : "2 Months",
+        "price" : 1200
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d18a"),
+        "id" : "08",
+        "name" : "Lucky",
+        "type" : "Bird",
+        "breed" : "Harz Roller",
+        "age" : "1 Year",
+        "price" : 900
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d18b"),
+        "id" : "04",
+        "name" : "Leo",
+        "type" : "Cat",
+        "breed" : "Ragamuffin",
+        "previous_owner" : "Lilly",
+        "age" : "1 Year",
+        "price" : 1400
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d18c"),
+        "id" : "05",
+        "name" : "Alfred",
+        "type" : "cat",
+        "breed" : "Persian cat",
+        "age" : "10 Months",
+        "price" : 1600
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d18d"),
+        "id" : "06",
+        "name" : "Buddy",
+        "type" : "Dog",
+        "breed" : "Labrador",
+        "age" : "5 Months",
+        "previous_owner" : "Chris",
+        "price" : 600
+}
+{
+        "_id" : ObjectId("5f5b4fb16dcbb02e3416d18e"),
+        "id" : "07",
+        "name" : "Kiwi.",
+        "type" : "Bird",
+        "breed" : "Amazon Parrot",
+        "age" : "15 Months",
+        "price" : 1800
+}
