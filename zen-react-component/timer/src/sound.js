@@ -8,6 +8,8 @@ class Sound extends React.Component {
   
     
     render() {
+        window.focus();
+        alert('Timer Ends')
         this.state.audio.play();
       return (
         <div className = "App-link">
