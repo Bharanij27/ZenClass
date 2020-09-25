@@ -13,6 +13,11 @@ class parent extends React.Component{
         this.setState({count : ++count});
     }
 
+    decreaseCount = () => {
+        let count = this.state.count
+        this.setState({count : --count});
+    }
+
     reset = () => {
         this.setState({count : 0});
     } 
