@@ -3,10 +3,10 @@ import React from 'react';
 function child (props){
         return(
             <div>
-                <button onClick = {props.IncreaseCount}>+</button>
-                <button onClick = {props.decreaseCount}>-</button>
+                <button onClick = {props.increaseCount}>+</button>
+                <button onClick = {props.decreaseCount} disabled = {!props.count}>-</button>
                 <p>{props.count}</p>
-                <button onClick = {props.reset}>Reset</button>
+                <button onClick = {props.reset} disabled = {!props.count}>Reset</button>
             </div>
         )
     }

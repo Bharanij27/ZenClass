@@ -8,24 +8,31 @@ class parent extends React.Component{
         this.state = {count : 0}
     }
 
-    updateCount = () => {
+    increaseCount = () => {
         let count = this.state.count
         this.setState({count : ++count});
     }
 
     decreaseCount = () => {
-        let count = this.state.count
-        this.setState({count : --count});
+        if(this.state.count > 0){
+            let count = this.state.count
+            this.setState({count : --count});
+        }
     }
 
     reset = () => {
-        this.setState({count : 0});
+        if(this.state.count !== 0){
+            this.setState({count : 0});
+        }
     } 
 
     render() {
         let count = this.state.count
         return (      
-            <Child count = {count} updateCount = {this.updateCount} reset = {this.reset}/>    
+            <Child count = {count} 
+            increaseCount = {this.increaseCount}
+            decreaseCount = {this.decreaseCount}
+            reset = {this.reset}/>    
         );  
     }
 }
