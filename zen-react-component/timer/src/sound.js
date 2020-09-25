@@ -6,11 +6,9 @@ class Sound extends React.Component {
       audio : new Audio('/waves.mp3')
     }
   
-    componentDidMount() {
-      this.state.audio.play();
-    }
-
+    
     render() {
+        this.state.audio.play();
       return (
         <div className = "App-link">
           <p>New Component Arrived</p>
