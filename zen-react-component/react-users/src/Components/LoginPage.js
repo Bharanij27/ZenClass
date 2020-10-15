@@ -11,6 +11,11 @@ const LoginPage = (props) => {
         phoneNum : ''
     }
     let history = useHistory();//
+    let token = JSON.parse(localStorage.getItem('userDetails-jwt'));
+    if(token !== null){
+        history.push('/user')
+    }
+    
     localStorage.setItem('userDetails-jwt', JSON.stringify(null))
     const [isLogin, setIsLogin] = useState(true);
     const [reset, setReset] = useState(false);
